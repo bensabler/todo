@@ -34,7 +34,7 @@ func (l *List) Add(task string) {
 // setting Done = true and CompletedAt to the current time
 func (l *List) Complete(i int) error {
 	ls := *l
-	if i < 0 || i >= len(ls) {
+	if i <= 0 || i > len(ls) {
 		return fmt.Errorf("Item %d does not exist", i)
 	}
 
