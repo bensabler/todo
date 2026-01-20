@@ -9,7 +9,7 @@ import (
 )
 
 // Hard coding the file name
-const fileName = ".todo.json"
+const todoFileName = ".todo.json"
 
 func main() {
 
@@ -17,7 +17,7 @@ func main() {
 	l := &todo.List{}
 
 	// Use the Get method to read to do items from file
-	if err := l.Get(fileName); err != nil {
+	if err := l.Get(todoFileName); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
@@ -41,7 +41,7 @@ func main() {
 		l.Add(item)
 
 		// Save the new list
-		if err := l.Save(fileName); err != nil {
+		if err := l.Save(todoFileName); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
 		}
