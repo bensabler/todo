@@ -39,18 +39,14 @@ func main() {
 	// Decide what to do based on the provided flags
 	switch {
 	case *list:
-		// List current to do items
-		for _, item := range *l {
-			if !item.Done {
-				fmt.Println(item.Task)
-			}
-		}
+		fmt.Print(l)
 
-	// case len(os.Args) == 1:
-	// 	// List current to do items
-	// 	for _, item := range *l {
-	// 		fmt.Println(item.Task)
-	// 	}
+		// // List current to do items
+		// for _, item := range *l {
+		// 	if !item.Done {
+		// 		fmt.Println(item.Task)
+		// 	}
+		// }
 
 	case *complete > 0:
 		// Complete the given item
@@ -79,18 +75,6 @@ func main() {
 		// Invalid flag provided
 		fmt.Fprintln(os.Stderr, "Invalid option")
 		os.Exit(1)
-
-		// // Concatenate all arguments with a space
-		// item := strings.Join(os.Args[1:], " ")
-
-		// // Add the task
-		// l.Add(item)
-
-		// // Save the new list
-		// if err := l.Save(todoFileName); err != nil {
-		// 	fmt.Fprintln(os.Stderr, err)
-		// 	os.Exit(1)
-		// }
 
 	}
 
