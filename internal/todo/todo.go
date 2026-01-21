@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -85,7 +86,7 @@ func (l *List) Get(filename string) error {
 // String prints out a formatted list
 // Implements the fmt.Stringer interface
 func (l *List) String() string {
-	formatted := ""
+	var formatted strings.Builder
 
 	for k, t := range *l {
 		prefix := "  "
@@ -94,8 +95,8 @@ func (l *List) String() string {
 		}
 
 		// Adjust the item number k to print numbers starting from 1 instead of 0
-		formatted += fmt.Sprintf("%s%d: %s\n", prefix, k+1, t.Task)
+		fmt.Fprintf(&formatted, "%s%d: %s\n", prefix, k+1, t.Task)
 	}
 
-	return formatted
+	return formatted.String()
 }
