@@ -25,6 +25,7 @@ func main() {
 
 	// Parsing command line flags
 	add := flag.Bool("add", false, "Add task to the ToDo list")
+	del := flag.Int("del", 0, "Item to be deleted")
 	list := flag.Bool("list", false, "List all tasks")
 	complete := flag.Int("complete", 0, "Item to be completed")
 
@@ -78,15 +79,18 @@ func main() {
 			os.Exit(1)
 		}
 
-	// case *task != "":
-	// 	// Add a new task
-	// 	l.Add(*task)
+	case *del > 0:
+		// Delete the given item
+		if err := l.Delete(*del); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
 
-	// 	// Save the new list
-	// 	if err := l.Save(todoFileName); err != nil {
-	// 		fmt.Fprintln(os.Stderr, err)
-	// 		os.Exit(1)
-	// 	}
+		// Save the new list
+		if err := l.Save(todoFileName); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
 
 	default:
 		// Invalid flag provided
