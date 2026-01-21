@@ -88,9 +88,9 @@ func (l *List) String() string {
 	formatted := ""
 
 	for k, t := range *l {
-		prefix := " "
+		prefix := "  "
 		if t.Done {
-			prefix = "X"
+			prefix = "X "
 		}
 
 		// Adjust the item number k to print numbers starting from 1 instead of 0
